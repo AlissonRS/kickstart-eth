@@ -9,7 +9,7 @@ const url = process.env.DEPLOY_ENDPOINT;
 const provider = new HDWalletProvider(mnemonic, url);
 const web3 = new Web3(provider);
 
-const compiledFactory = require('../ethereum/build/CampaignFactory.json');
+const compiledFactory = require('../build/CampaignFactory.json');
 let { abi, evm } = compiledFactory;
 
 const deploy = async () => {
