@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.next": true,
+        "**/build": true,
+        "**/node_modules": true
+    },
+    "conventionalCommits.scopes": [
+        "solidity",
+        "frontend"
+    ]
+}
