@@ -7,7 +7,7 @@ const solc = require('solc');
 const buildPath = path.resolve(__dirname, `build`);
 fs.removeSync(buildPath);
 
-const contractPath = path.resolve(__dirname, 'src', 'contracts', 'Campaign.sol');
+const contractPath = path.resolve(__dirname, 'contracts', 'Campaign.sol');
 const source = fs.readFileSync(contractPath, 'utf8');
 
 const input = {
@@ -41,7 +41,7 @@ for (let i = 0; i < contracts.length; i++) {
     fs.outputJsonSync(
         path.resolve(buildPath, contract + '.json'),
         fileJson[contract]
-    );    
+    );
 }
 
 exit(0);

@@ -9,7 +9,7 @@ const url = process.env.DEPLOY_ENDPOINT;
 const provider = new HDWalletProvider(mnemonic, url);
 const web3 = new Web3(provider);
 
-const compiledFactory = require('../build/CampaignFactory.json');
+const compiledFactory = require('./build/CampaignFactory.json');
 let { abi, evm } = compiledFactory;
 
 const deploy = async () => {
@@ -22,7 +22,7 @@ const deploy = async () => {
             data: evm.bytecode.object,
             arguments: []
         })
-        .send({ from: accounts[0], gas: 1000000 });
+        .send({ from: accounts[0], gas: 3000000 });
 
     console.log('Contract deployed to', result.options.address);
     provider.engine.stop();
