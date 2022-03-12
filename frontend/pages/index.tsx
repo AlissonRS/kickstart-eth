@@ -1,10 +1,8 @@
-import type { NextPage } from 'next'
-import { useEffect, useState } from 'react'
-import { Link } from 'routes'
-import { Button, Card } from 'semantic-ui-react'
-import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
-import factory from '../utils/factory'
+import type { NextPage } from 'next';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { Button, Card } from 'semantic-ui-react';
+import Layout from '../components/Layout';
 
 const Home: NextPage = () => {
 
@@ -12,7 +10,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const fetchCampaigns = async () => {
-      const res = await fetch('api/campaigns');
+      const res = await fetch('api/campaigns/all');
       const fetchedCampaigns = await res.json();
       console.log("fetched", fetchedCampaigns);
       setCampaigns(fetchedCampaigns);
@@ -22,7 +20,7 @@ const Home: NextPage = () => {
 
   const items = campaigns.map((address: any) => ({
     header: address,
-    description: <Link route={`/campaigns/${address}`}><a>View Campaign</a></Link>,
+    description: <Link href={`/campaigns/${address}`}><a>View Campaign</a></Link>,
     fluid: true
   }));
 
@@ -31,7 +29,7 @@ const Home: NextPage = () => {
       <div>
         <h3>Open Campaigns</h3>
 
-        <Link route="/campaigns/new">
+        <Link href="/campaigns/new">
           <a>
             <Button primary floated="right" content="Create Campaign" icon="add circle"></Button>      
           </a>

@@ -1,5 +1,5 @@
-import React, { FC, useCallback, useState } from 'react';
-import { Router } from 'routes';
+import { useRouter } from 'next/router';
+import React, { FC, FormEvent, useCallback, useState } from 'react';
 import { Button, Container, Form, Input, Message } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import factory from '../../utils/factory';
@@ -9,8 +9,9 @@ const CampaignNew: FC = (props) => {
     const [minContribution, setMinContribution] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
-    const onSubmit = useCallback(async (event) => {
+    const onSubmit = useCallback(async (event: FormEvent) => {
         event.preventDefault();
         try {
             setLoading(true);
@@ -21,7 +22,7 @@ const CampaignNew: FC = (props) => {
             .send({
                 from: accounts[0]
             });
-            Router.pushRoute('/');
+            router.push('/');
         } catch (e) {
             const err = e as any;
             if ('message' in err) {
@@ -29,7 +30,7 @@ const CampaignNew: FC = (props) => {
             }
         }
         setLoading(false);
-    }, [minContribution, setErrorMessage, setLoading]);
+    }, [minContribution, router]);
 
     return (
         <Layout>
