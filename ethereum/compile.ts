@@ -29,9 +29,6 @@ const input = {
 const compiled = solc.compile(JSON.stringify(input));
 const obj = JSON.parse(compiled);
 
-
-// const { abi, evm } = obj.contracts['Lottery.sol']['Lottery'];
-
 fs.ensureDirSync(buildPath);
 
 const fileJson = obj.contracts['Campaign.sol'];
@@ -43,5 +40,3 @@ for (let i = 0; i < contracts.length; i++) {
         fileJson[contract]
     );
 }
-
-exit(0);

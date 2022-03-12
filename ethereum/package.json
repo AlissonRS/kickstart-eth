@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --ignore-watch node_modules compile.ts",
-    "deploy": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --ignore-watch node_modules deploy.ts",
+    "compile": "ts-node -r tsconfig-paths/register compile.ts",
+    "deploy": "ts-node -r tsconfig-paths/register deploy.ts",
     "test": "mocha -r ts-node/register 'test/**/*.ts'"
   },
   "author": "",
