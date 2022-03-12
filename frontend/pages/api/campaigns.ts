@@ -11,6 +11,5 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const fetchedCampaigns = await factory.methods.getDeployedCampaigns().call();
-  console.log('CAMPAIGNS', fetchedCampaigns);
   res.status(200).json(fetchedCampaigns);
 }

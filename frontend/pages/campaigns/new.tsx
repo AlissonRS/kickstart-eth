@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
+import { Router } from 'routes';
 import { Button, Container, Form, Input, Message } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import factory from '../../utils/factory';
@@ -20,6 +21,7 @@ const CampaignNew: FC = (props) => {
             .send({
                 from: accounts[0]
             });
+            Router.pushRoute('/');
         } catch (e) {
             const err = e as any;
             if ('message' in err) {
